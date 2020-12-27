@@ -3,16 +3,17 @@
 namespace App\Http\Controllers;
 use App\Models\BlogPost;
 use App\Http\Requests\StorePost;
+use Illuminate\Support\Facades\Gate;
 
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('auth')
-    //         ->only(['create','store','edit','update','destroy']);
-    // }
+    public function __construct()
+    {
+        $this->middleware('auth')
+            ->only(['create','store','edit','update','destroy']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -70,6 +71,11 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = BlogPost::find($id);
+
+        if (Gate::allows('update-post', $post)) {
+            abort(403, "You can't edit post");
+        };
+
         return view('posts.edit', ['post'=>$post]);
     }
 
@@ -83,6 +89,11 @@ class PostController extends Controller
     public function update(StorePost $request, $id)
     {
         $post = BlogPost::findOrFail($id);
+
+        if (Gate::allows('update-post', $post)) {
+            abort(403, "You can't edit post");
+        };
+
         $validated = $request->validated();
         $post->fill($validated);
         $post->save();
