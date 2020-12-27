@@ -28,15 +28,15 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define('edit-post', function ($user) {
-                return $user->is_active==1;
+                return $user->is_active==0;
             });
 
         Gate::define('update-post', function ($user) {
-                return $user->is_active==1;
+                return $user->is_active==0;
             });
 
-        Gate::before(function ($user) {
-            if($user -> is_admin)  {
+        Gate::before(function ($user, $ability) {
+            if($user -> is_admin==1)  {
                 return true;
             }
             });

@@ -25,10 +25,10 @@ class Listeners
      * @param  UserEventListener  $event
      * @return void
      */
-    public function handle(UserEventListener $event)
-    {
-        //
-    }
+    // public function handle(UserEventListener $event)
+    // {
+    //     //
+    // }
     public function onUserLogin(User $user, $remember)
     {
         $user->loginCount++;

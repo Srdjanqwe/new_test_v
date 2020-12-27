@@ -19,6 +19,7 @@
                                 <tr>
                                     <td><a href="{{ route('posts.show', ['post' =>$post->id]) }}">{{ $post->user->name ?? null}}</a></td>
                                     <td><a href="{{ route('posts.show', ['post' =>$post->id]) }}">{{ $post->unique ?? null}}</a></td>
+                                    <td><a href="{{ route('posts.show', ['post' =>$post->id]) }}">{{ $post->user->loginCount ?? null}}</a></td>
                                     <td><a class="btn btn-primary" href="{{ route('posts.edit', ['post' => $post->id]) }}">Edit</a></td>
 
                                     @can('home.secret')

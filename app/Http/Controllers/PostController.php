@@ -72,7 +72,7 @@ class PostController extends Controller
     {
         $post = BlogPost::find($id);
 
-        if (Gate::allows('update-post', $post)) {
+        if (Gate::denies('update-post', $post)) {
             abort(403, "You can't edit post");
         };
 
@@ -90,7 +90,7 @@ class PostController extends Controller
     {
         $post = BlogPost::findOrFail($id);
 
-        if (Gate::allows('update-post', $post)) {
+        if (Gate::denies('update-post', $post)) {
             abort(403, "You can't edit post");
         };
 
