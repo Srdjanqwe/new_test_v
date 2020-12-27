@@ -17,7 +17,7 @@
             <a class="p-2 text-dark" href="{{ route('posts.index') }}">Blog Post</a>
             <a class="p-2 text-dark" href="{{ route('posts.create') }}">User Form</a>
 
-            {{-- @guest
+            @guest
                 @if (Route::has('register'))
                     <a class="p-2 text-dark" href="{{ route('register')}}">Register</a>
                 @endif
@@ -30,9 +30,7 @@
                     @csrf
 
                 </form>
-            @endguest --}}
-
-
+            @endguest
 
         </nav>
     </div>

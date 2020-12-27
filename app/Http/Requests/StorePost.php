@@ -13,7 +13,7 @@ class StorePost extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,7 @@ class StorePost extends FormRequest
     public function rules()
     {
         return [
-                'user_name'=>'required',
+                // 'user_name'=>'required',
                 'unique'=>'alpha_num|nullable',
         ];
     }

@@ -10,7 +10,8 @@ class BlogPost extends Model
     use HasFactory;
 
     protected $table = 'blogposts';
-    protected $fillable = ['user_name','unique'];
+    // protected $fillable = ['user_name','unique'];
+    protected $fillable = ['unique'];
 
 
     public function user()

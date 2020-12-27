@@ -1,7 +1,7 @@
-<div class="form-group">
+{{-- <div class="form-group">
     <label>Name</label>
     <input id="user_name" type="text" name="user_name"  value="{{ old('user_name', $post->user->name ?? null) }}">
-</div>
+</div> --}}
 
 <div class="form-group">
     <label>Unique Employee Identification</label>
