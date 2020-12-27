@@ -2,7 +2,7 @@
 
 namespace App\Events;
 namespace App\Providers;
-// namespace App\Models;
+namespace App\Models;
 
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -38,8 +38,14 @@ class UserEventListener
     {
         return new PrivateChannel('channel-name');
     }
-    // public function boot(DispatcherContract $events)
-    // {
-    //     parent::boot($events);
-    // }
+
+    public function handle(User $user, $remember)
+    {
+        User::info('Logged in');
+
+        $user->loginCount += 1;
+        $user->save();
+        // $user->increment('loginCount');
+
+    }
 }

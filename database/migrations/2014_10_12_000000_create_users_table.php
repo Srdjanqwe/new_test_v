@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->boolean('is_active')->default(false);
-            $table->integer('loginCount')->nullable();
+            $table->integer('loginCount')->unsigned()->default(0);
         });
     }
 
