@@ -1,7 +1,11 @@
 <?php
 
 namespace App\Events;
-namespace App\Listeners;
+namespace App\Providers;
+// namespace App\Models;
+
+use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
+use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
@@ -10,7 +14,6 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
-use App\Models\User;
 
 class UserEventListener
 {
@@ -35,31 +38,8 @@ class UserEventListener
     {
         return new PrivateChannel('channel-name');
     }
-
-
-    /**
-     * Handle user login events.
-     *
-     * @param User $user
-     * @param bool $remember
-     */
-    public function onUserLogin(User $user, $remember)
-    {
-        $user->loginCount++;
-        $user->save();
-    }
-
-    /**
-     * Register the listeners for the subscriber.
-     *
-     * @param  Illuminate\Events\Dispatcher  $events
-     */
-    public function subscribe($events)
-    {
-        $events->listen(
-            'auth.login',
-            'App\Listeners\UserEventListener@onUserLogin'
-        );
-    }
-
+    // public function boot(DispatcherContract $events)
+    // {
+    //     parent::boot($events);
+    // }
 }
