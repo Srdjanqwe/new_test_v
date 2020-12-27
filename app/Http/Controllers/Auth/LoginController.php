@@ -116,6 +116,11 @@ class LoginController extends Controller
      *
      * @return void
      */
+    public function canImpersonate()
+    {
+        // For example
+        return $this->is_admin == 1;
+    }
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
